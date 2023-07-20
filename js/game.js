@@ -5,8 +5,11 @@ class Game {
   constructor() {
     // aqui estarán todas las propiedades de mi juego
 
+    // aqui vamos a crear un pollito. new Pollito
+    this.pollito = new Pollito()
+    console.log(this.pollito)
 
-    
+
   }
 
 
@@ -17,6 +20,11 @@ class Game {
     // ESTO SE ESTA EJECUTANDO 60 VECES POR SEGUNDO
 
     // muchas cosas
+    // this.pollito.y += 1;
+    // this.pollito.node.style.top = `${this.pollito.y}px`;
+
+    this.pollito.gravityEffect()
+    // this.pollito.jumpEffect() // esta accion no va en el gameLoop
 
     requestAnimationFrame( this.gameLoop )
 
@@ -28,7 +36,7 @@ class Game {
 // planificacion
 
 // propiedades
-// el pollo => x, y, w, h
+// el pollo => x, y, w, h CHECK
 // los tubos => x, y, w, h
 
 // metodos

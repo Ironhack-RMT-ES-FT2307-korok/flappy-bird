@@ -16,27 +16,34 @@ class Pollito {
     this.w = 40; // ancho
     this.h = 35; // alto
 
+    this.gravitySpeed = 2;
+    this.jumpSpeed = 40;
+
     // ajustar el tamaño y posición inicial del pollito
     this.node.style.width = `${this.w}px`;
     this.node.style.height = `${this.h}px`;
     this.node.style.position = "absolute";
     this.node.style.top = `${this.y}px`;
     this.node.style.left = `${this.x}px`;
-
   }
 
   // aqui los metodos del pollito
   gravityEffect = () => {
-
-    this.y += 1;
-    this.node.style.top = `${this.y}px`;
-
+    this.y += this.gravitySpeed;
+    this.positionUpdate()
   }
 
   jumpEffect = () => {
-    
-    this.y -= 20;
+    this.y -= this.jumpSpeed;
+    this.positionUpdate()
+    // this.x += 5;
+    // this.node.style.left = `${this.x}px`;
+  }
+
+  positionUpdate = () => {
     this.node.style.top = `${this.y}px`;
+    // el pollito solo se mueve en el eje Y
+    // si tambien se moviera en el X o otros cambios afectaran al pollito, irian en esta seccion
 
   }
 

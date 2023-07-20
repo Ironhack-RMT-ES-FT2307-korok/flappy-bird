@@ -26,11 +26,13 @@ function startGame() {
 // * ADD EVENT LISTENERS
 startBtnNode.addEventListener("click", startGame)
 gameBoxNode.addEventListener("click", () => {
-  console.log("haciendo click")
+  // console.log("haciendo click")
 
   // como invocamos la funcion jumpEffect
   // let pollito = new Pollito()
-  gameObj.pollito.jumpEffect()
+  if (gameObj.isGameOn === true) {
+    gameObj.pollito.jumpEffect()
+  } // si el juego ya se termino, el pollito no salta
 })
 
 

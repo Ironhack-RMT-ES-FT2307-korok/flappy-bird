@@ -17,10 +17,34 @@ class Game {
     this.isGameOn = true;
   }
 
+  gameOver = () => {
+    this.isGameOn = false; // detiene la recursion
+    gameScreenNode.style.display = "none"; // ocultar la pantalla de juego
+    gameoverScreenNode.style.display = "flex"; // mostrar la pantalla final
+  }
+
+  collisionPollitoObstaculos = () => {
+
+    // el pollito => this.pollito
+    this.obstaculosArr.forEach((cadaObstaculo) => {
+      // los obstaculos => cadaObstaculo
+      if (
+        this.pollito.x < cadaObstaculo.x + cadaObstaculo.w &&
+        this.pollito.x + this.pollito.w > cadaObstaculo.x &&
+        this.pollito.y < cadaObstaculo.y + cadaObstaculo.h &&
+        this.pollito.y + this.pollito.h > cadaObstaculo.y
+      ) {
+        // Collision detected!
+        this.gameOver()
+      }
+    })
+
+  }
+
   collisionPollitoSuelo = () => {
     if (this.pollito.y + this.pollito.h > gameBoxNode.offsetHeight) {
       console.log("el pollito se estampo contra el piso")
-      this.isGameOn = false;
+      this.gameOver()
     }
   }
 
@@ -77,8 +101,9 @@ class Game {
       cadaObstaculo.automaticMovement();
     })
 
-    this.obstaculosDesaparecen()
-    this.collisionPollitoSuelo()
+    this.obstaculosDesaparecen();
+    this.collisionPollitoSuelo();
+    this.collisionPollitoObstaculos();
 
 
 

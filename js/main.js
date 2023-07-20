@@ -4,6 +4,7 @@ const startBtnNode = document.querySelector("#start-btn");
 const splashScreenNode = document.querySelector("#splash-screen");
 const gameScreenNode = document.querySelector("#game-screen");
 const gameBoxNode = document.querySelector("#game-box");
+const gameoverScreenNode = document.querySelector("#gameover-screen")
 
 let gameObj = null; // el juego aun no ha iniciado
 
